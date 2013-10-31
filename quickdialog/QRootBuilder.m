@@ -142,104 +142,89 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 }
 
 - (void)initializeMappings {
-    QRootBuilderStringToTypeConversionDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                [NSNumber numberWithInt:QPresentationModeNormal], @"Normal",
-                                [NSNumber numberWithInt:QPresentationModeNavigationInPopover], @"NavigationInPopover",
-                                [NSNumber numberWithInt:QPresentationModeModalForm], @"ModalForm",
-                                [NSNumber numberWithInt:QPresentationModePopover], @"Popover",
-                               [NSNumber numberWithInt:QPresentationModeModalFullScreen], @"ModalFullScreen",
-                               [NSNumber numberWithInt:QPresentationModeModalPage], @"ModalPage",
-                                nil], @"presentationMode",
-
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                        [NSNumber numberWithInt:UITextAutocapitalizationTypeNone], @"None",
-                                [NSNumber numberWithInt:UITextAutocapitalizationTypeWords], @"Words",
-                                [NSNumber numberWithInt:UITextAutocapitalizationTypeSentences], @"Sentences",
-                                [NSNumber numberWithInt:UITextAutocapitalizationTypeAllCharacters], @"AllCharacters",
-                                nil], @"autocapitalizationType",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                            [NSNumber numberWithInt:UITextAutocorrectionTypeDefault], @"Default",
-                                    [NSNumber numberWithInt:UITextAutocorrectionTypeNo], @"No",
-                                    [NSNumber numberWithInt:UITextAutocorrectionTypeYes], @"Yes",
-                                    nil], @"autocorrectionType",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                [NSNumber numberWithInt:UITableViewCellStyleDefault], @"Default",
-                                                        [NSNumber numberWithInt:UITableViewCellStyleSubtitle], @"Subtitle",
-                                                        [NSNumber numberWithInt:UITableViewCellStyleValue2], @"Value2",
-                                                        [NSNumber numberWithInt:UITableViewCellStyleValue1], @"Value1",
-                                                        nil], @"cellStyle",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:UIKeyboardTypeDefault], @"Default",
-                                    [NSNumber numberWithInt:UIKeyboardTypeASCIICapable], @"ASCIICapable",
-                                    [NSNumber numberWithInt:UIKeyboardTypeNumbersAndPunctuation], @"NumbersAndPunctuation",
-                                    [NSNumber numberWithInt:UIKeyboardTypeURL], @"URL",
-                                    [NSNumber numberWithInt:UIKeyboardTypeNumberPad], @"NumberPad",
-                                    [NSNumber numberWithInt:UIKeyboardTypePhonePad], @"PhonePad",
-                                    [NSNumber numberWithInt:UIKeyboardTypeNamePhonePad], @"NamePhonePad",
-                                    [NSNumber numberWithInt:UIKeyboardTypeEmailAddress], @"EmailAddress",
-                                    [NSNumber numberWithInt:UIKeyboardTypeDecimalPad], @"DecimalPad",
-                                    [NSNumber numberWithInt:UIKeyboardTypeTwitter], @"Twitter",
-                                    [NSNumber numberWithInt:UIKeyboardTypeAlphabet], @"Alphabet",
-                                    nil], @"keyboardType",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                            [NSNumber numberWithInt:UIKeyboardAppearanceDefault], @"Default",
-                                    [NSNumber numberWithInt:UIKeyboardAppearanceAlert], @"Alert",
-                                    nil], @"keyboardAppearance",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:UIActivityIndicatorViewStyleGray], @"Gray",
-                                    [NSNumber numberWithInt:UIActivityIndicatorViewStyleWhite], @"White",
-                                    [NSNumber numberWithInt:UIActivityIndicatorViewStyleWhiteLarge], @"WhiteLarge",
-                                    nil], @"indicatorViewStyle",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                        [NSNumber numberWithInt:UITableViewCellAccessoryDetailDisclosureButton], @"DetailDisclosureButton",
-                                                        [NSNumber numberWithInt:UITableViewCellAccessoryCheckmark], @"Checkmark",
-                                                        [NSNumber numberWithInt:UITableViewCellAccessoryDisclosureIndicator], @"DisclosureIndicator",
-                                                        [NSNumber numberWithInt:UITableViewCellAccessoryNone], @"None",
-                                                        nil], @"accessoryType",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:UIDatePickerModeDate], @"Date",
-                                    [NSNumber numberWithInt:UIDatePickerModeTime], @"Time",
-                                    [NSNumber numberWithInt:UIDatePickerModeDateAndTime], @"DateAndTime",
-                                    nil], @"mode",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                    [NSNumber numberWithInt:UIReturnKeyDefault], @"Default",
-                                    [NSNumber numberWithInt:UIReturnKeyGo], @"Go",
-                                    [NSNumber numberWithInt:UIReturnKeyGoogle], @"Google",
-                                    [NSNumber numberWithInt:UIReturnKeyJoin], @"Join",
-                                    [NSNumber numberWithInt:UIReturnKeyNext], @"Next",
-                                    [NSNumber numberWithInt:UIReturnKeyRoute], @"Route",
-                                    [NSNumber numberWithInt:UIReturnKeySearch], @"Search",
-                                    [NSNumber numberWithInt:UIReturnKeySend], @"Send",
-                                    [NSNumber numberWithInt:UIReturnKeyYahoo], @"Yahoo",
-                                    [NSNumber numberWithInt:UIReturnKeyDone], @"Done",
-                                    [NSNumber numberWithInt:UIReturnKeyEmergencyCall], @"EmergencyCall",
-                                    nil], @"returnKeyType",
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                        [NSNumber numberWithInt:QLabelingPolicyTrimTitle], @"trimTitle",
-                                                        [NSNumber numberWithInt:QLabelingPolicyTrimValue], @"trimValue",
-                                    nil], @"labelingPolicy",
-
-
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                                                            [NSNumber numberWithInt:UIImagePickerControllerSourceTypePhotoLibrary], @"photoLibrary",
-                                                            [NSNumber numberWithInt:UIImagePickerControllerSourceTypeCamera], @"camera",
-                                                            [NSNumber numberWithInt:UIImagePickerControllerSourceTypeSavedPhotosAlbum], @"savedPhotosAlbum",
-                                    nil], @"source",
-
-            nil];
-
+    QRootBuilderStringToTypeConversionDict =
+    @{
+      @"presentationMode" : @{
+              @"Normal"              : @(QPresentationModeNormal),
+              @"NavigationInPopover" : @(QPresentationModeNavigationInPopover),
+              @"ModalForm"           : @(QPresentationModeModalForm),
+              @"Popover"             : @(QPresentationModePopover),
+              @"ModalFullScreen"     : @(QPresentationModeModalFullScreen),
+              @"ModalPage"           : @(QPresentationModeModalPage),
+              },
+      @"autocapitalizationType" : @{
+              @"None"          : @(UITextAutocapitalizationTypeNone),
+              @"Words"         : @(UITextAutocapitalizationTypeWords),
+              @"Sentences"     : @(UITextAutocapitalizationTypeSentences),
+              @"AllCharacters" : @(UITextAutocapitalizationTypeAllCharacters),
+              },
+      @"autocorrectionType" : @{
+              @"Default" : @(UITextAutocorrectionTypeDefault),
+              @"No"      : @(UITextAutocorrectionTypeNo),
+              @"Yes"     : @(UITextAutocorrectionTypeYes),
+              },
+      @"cellStyle" : @{
+              @"Default"  : @(UITableViewCellStyleDefault),
+              @"Subtitle" : @(UITableViewCellStyleSubtitle),
+              @"Value2"   : @(UITableViewCellStyleValue2),
+              @"Value1"   : @(UITableViewCellStyleValue1),
+              },
+      @"keyboardType" : @{
+              @"Default"               : @(UIKeyboardTypeDefault),
+              @"ASCIICapable"          : @(UIKeyboardTypeASCIICapable),
+              @"NumbersAndPunctuation" : @(UIKeyboardTypeNumbersAndPunctuation),
+              @"URL"                   : @(UIKeyboardTypeURL),
+              @"NumberPad"             : @(UIKeyboardTypeNumberPad),
+              @"PhonePad"              : @(UIKeyboardTypePhonePad),
+              @"NamePhonePad"          : @(UIKeyboardTypeNamePhonePad),
+              @"EmailAddress"          : @(UIKeyboardTypeEmailAddress),
+              @"DecimalPad"            : @(UIKeyboardTypeDecimalPad),
+              @"Twitter"               : @(UIKeyboardTypeTwitter),
+              @"Alphabet"              : @(UIKeyboardTypeAlphabet),
+              },
+      @"keyboardAppearance" : @{
+              @"Default" : @(UIKeyboardAppearanceDefault),
+              @"Alert"   : @(UIKeyboardAppearanceAlert),
+              },
+      @"indicatorViewStyle" : @{
+              @"Gray"       : @(UIActivityIndicatorViewStyleGray),
+              @"White"      : @(UIActivityIndicatorViewStyleWhite),
+              @"WhiteLarge" : @(UIActivityIndicatorViewStyleWhiteLarge),
+              },
+      @"accessoryType" : @{
+              @"DetailDisclosureButton" : @(UITableViewCellAccessoryDetailDisclosureButton),
+              @"Checkmark"              : @(UITableViewCellAccessoryCheckmark),
+              @"DisclosureIndicator"    : @(UITableViewCellAccessoryDisclosureIndicator),
+              @"None"                   : @(UITableViewCellAccessoryNone),
+              },
+      @"mode" : @{
+              @"Date"        : @(UIDatePickerModeDate),
+              @"Time"        : @(UIDatePickerModeTime),
+              @"DateAndTime" : @(UIDatePickerModeDateAndTime),
+              },
+      @"returnKeyType" : @{
+              @"Default"       : @(UIReturnKeyDefault),
+              @"Go"            : @(UIReturnKeyGo),
+              @"Google"        : @(UIReturnKeyGoogle),
+              @"Join"          : @(UIReturnKeyJoin),
+              @"Next"          : @(UIReturnKeyNext),
+              @"Route"         : @(UIReturnKeyRoute),
+              @"Search"        : @(UIReturnKeySearch),
+              @"Send"          : @(UIReturnKeySend),
+              @"Yahoo"         : @(UIReturnKeyYahoo),
+              @"Done"          : @(UIReturnKeyDone),
+              @"EmergencyCall" : @(UIReturnKeyEmergencyCall),
+              },
+      @"labelingPolicy" : @{
+              @"trimTitle" : @(QLabelingPolicyTrimTitle),
+              @"trimValue" : @(QLabelingPolicyTrimValue),
+              },
+      @"source" :  @{
+              @"photoLibrary"     : @(UIImagePickerControllerSourceTypePhotoLibrary),
+              @"camera"           : @(UIImagePickerControllerSourceTypeCamera),
+              @"savedPhotosAlbum" : @(UIImagePickerControllerSourceTypeSavedPhotosAlbum),
+              },
+      };
 }
 
 
