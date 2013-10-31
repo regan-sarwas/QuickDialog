@@ -78,16 +78,16 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 }
 
 - (QElement *)buildElementWithObject:(id)obj {
-    QElement *element = [[NSClassFromString([obj valueForKey:[NSString stringWithFormat:@"type"]]) alloc] init];
+    QElement *element = [[NSClassFromString([obj valueForKey:@"type"]) alloc] init];
     if (element==nil) {
-        NSLog(@"Couldn't build element for type %@", [obj valueForKey:[NSString stringWithFormat:@"type"]]);
+        NSLog(@"Couldn't build element for type %@", [obj valueForKey:@"type"]);
         return nil;
     }
     if ([obj isKindOfClass:([NSDictionary class])]) {
         [self updateObject:element withPropertiesFrom:obj];
     }
-    if ([element isKindOfClass:[QRootElement class]] && [obj valueForKey:[NSString stringWithFormat:@"sections"]]!=nil) {
-        for (id section in (NSArray *)[obj valueForKey:[NSString stringWithFormat:@"sections"]]){
+    if ([element isKindOfClass:[QRootElement class]] && [obj valueForKey:@"sections"]!=nil) {
+        for (id section in (NSArray *)[obj valueForKey:@"sections"]){
             [self buildSectionWithObject:section forRoot:(QRootElement *) element];
         }
     }
@@ -96,8 +96,8 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 
 - (QSection *)buildSectionWithObject:(id)obj {
     QSection *sect = nil;
-    if ([obj valueForKey:[NSString stringWithFormat:@"type"]]!=nil){
-        sect = [[NSClassFromString([obj valueForKey:[NSString stringWithFormat:@"type"]]) alloc] init];
+    if ([obj valueForKey:@"type"]!=nil){
+        sect = [[NSClassFromString([obj valueForKey:@"type"]) alloc] init];
     } else {
         sect = [[QSection alloc] init];
     }
@@ -109,8 +109,8 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 
 - (void)buildSectionWithObject:(id)obj forRoot:(QRootElement *)root {
     QSection *sect = nil;
-    if ([obj valueForKey:[NSString stringWithFormat:@"type"]]!=nil){
-        sect = [[NSClassFromString([obj valueForKey:[NSString stringWithFormat:@"type"]]) alloc] init];
+    if ([obj valueForKey:@"type"]!=nil){
+        sect = [[NSClassFromString([obj valueForKey:@"type"]) alloc] init];
     } else {
         sect = [[QSection alloc] init];
     }
@@ -118,7 +118,7 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
         [self updateObject:sect withPropertiesFrom:obj];
     }
     [root addSection:sect];
-    for (id element in (NSArray *)[obj valueForKey:[NSString stringWithFormat:@"elements"]]){
+    for (id element in (NSArray *)[obj valueForKey:@"elements"]){
         QElement *elementNode = [self buildElementWithObject:element];
         if (elementNode) {
             [sect addElement:elementNode];
@@ -134,7 +134,7 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
     if ([obj isKindOfClass:([NSDictionary class])]) {
         [self updateObject:root withPropertiesFrom:obj];
     }
-    for (id section in (NSArray *)[obj valueForKey:[NSString stringWithFormat:@"sections"]]){
+    for (id section in (NSArray *)[obj valueForKey:@"sections"]){
         [self buildSectionWithObject:section forRoot:root];
     }
     
