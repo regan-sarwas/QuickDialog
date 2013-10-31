@@ -231,11 +231,6 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
                                                             [NSNumber numberWithInt:UIImagePickerControllerSourceTypeSavedPhotosAlbum], @"savedPhotosAlbum",
                                     nil], @"source",
 
-                    [[NSDictionary alloc] initWithObjectsAndKeys:
-                            [NSNumber numberWithInt:QLabelingPolicyTrimTitle], @"trimTitle",
-                            [NSNumber numberWithInt:QLabelingPolicyTrimValue], @"trimValue",
-                            nil], @"labelingPolicy",
-
             nil];
 
 }
