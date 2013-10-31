@@ -68,11 +68,12 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 }
 
 - (void)updateObject:(id)element withPropertiesFrom:(NSDictionary *)dict {
+    //FIXME - will throw if keys of dict are not NSStrings
     for (NSString *key in dict.allKeys){
         if ([key isEqualToString:@"type"] || [key isEqualToString:@"sections"]|| [key isEqualToString:@"elements"])
             continue;
 
-        id value = [dict valueForKey:key];
+        id value = dict[key];
         [QRootBuilder trySetProperty:key onObject:element withValue:value localized:YES];
     }
 }
@@ -97,6 +98,7 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 - (QSection *)buildSectionWithObject:(id)obj {
     QSection *sect = nil;
     if ([obj valueForKey:@"type"]!=nil){
+        //FIXME will throw if value at type is not a string, or if string is not the name of a class that inherits from QSection
         sect = [[NSClassFromString([obj valueForKey:@"type"]) alloc] init];
     } else {
         sect = [[QSection alloc] init];
@@ -108,15 +110,7 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 }
 
 - (void)buildSectionWithObject:(id)obj forRoot:(QRootElement *)root {
-    QSection *sect = nil;
-    if ([obj valueForKey:@"type"]!=nil){
-        sect = [[NSClassFromString([obj valueForKey:@"type"]) alloc] init];
-    } else {
-        sect = [[QSection alloc] init];
-    }
-    if ([obj isKindOfClass:([NSDictionary class])]) {
-        [self updateObject:sect withPropertiesFrom:obj];
-    }
+    QSection *sect = [self buildSectionWithObject:obj];
     [root addSection:sect];
     for (id element in (NSArray *)[obj valueForKey:@"elements"]){
         QElement *elementNode = [self buildElementWithObject:element];

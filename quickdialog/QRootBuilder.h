@@ -27,6 +27,6 @@
 
 - (void)buildSectionWithObject:(id)obj forRoot:(QRootElement *)root;
 
-
+//called by QBindingEvaluator.bindRootElement:toCollection:
 - (QSection *)buildSectionWithObject:(NSDictionary *)dictionary;
 @end
