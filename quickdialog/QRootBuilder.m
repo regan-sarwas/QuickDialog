@@ -83,8 +83,9 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
         NSLog(@"Couldn't build element for type %@", [obj valueForKey:[NSString stringWithFormat:@"type"]]);
         return nil;
     }
-    [self updateObject:element withPropertiesFrom:obj];
-    
+    if ([obj isKindOfClass:([NSDictionary class])]) {
+        [self updateObject:element withPropertiesFrom:obj];
+    }
     if ([element isKindOfClass:[QRootElement class]] && [obj valueForKey:[NSString stringWithFormat:@"sections"]]!=nil) {
         for (id section in (NSArray *)[obj valueForKey:[NSString stringWithFormat:@"sections"]]){
             [self buildSectionWithObject:section forRoot:(QRootElement *) element];
@@ -93,14 +94,16 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
     return element;
 }
 
-- (QSection *)buildSectionWithObject:(NSDictionary *)obj {
+- (QSection *)buildSectionWithObject:(id)obj {
     QSection *sect = nil;
     if ([obj valueForKey:[NSString stringWithFormat:@"type"]]!=nil){
         sect = [[NSClassFromString([obj valueForKey:[NSString stringWithFormat:@"type"]]) alloc] init];
     } else {
         sect = [[QSection alloc] init];
     }
-    [self updateObject:sect withPropertiesFrom:obj];
+    if ([obj isKindOfClass:([NSDictionary class])]) {
+        [self updateObject:sect withPropertiesFrom:obj];
+    }
     return sect;
 }
 
@@ -111,7 +114,9 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
     } else {
         sect = [[QSection alloc] init];
     }
-    [self updateObject:sect withPropertiesFrom:obj];
+    if ([obj isKindOfClass:([NSDictionary class])]) {
+        [self updateObject:sect withPropertiesFrom:obj];
+    }
     [root addSection:sect];
     for (id element in (NSArray *)[obj valueForKey:[NSString stringWithFormat:@"elements"]]){
         QElement *elementNode = [self buildElementWithObject:element];
@@ -126,7 +131,9 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
         [self initializeMappings];
     
     QRootElement *root = [QRootElement new];
-    [self updateObject:root withPropertiesFrom:obj];
+    if ([obj isKindOfClass:([NSDictionary class])]) {
+        [self updateObject:root withPropertiesFrom:obj];
+    }
     for (id section in (NSArray *)[obj valueForKey:[NSString stringWithFormat:@"sections"]]){
         [self buildSectionWithObject:section forRoot:root];
     }
