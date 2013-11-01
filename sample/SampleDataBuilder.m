@@ -37,7 +37,7 @@
 	[subsection	addElement:[[QBooleanElement alloc] init]];
 	[subsection	addElement:[[QButtonElement alloc] init]];
 	[subsection	addElement:[[QDateTimeInlineElement alloc] init]];
-	[subsection	addElement:[[QFloatElement alloc] init]];
+	[subsection	addElement:[[QFloatElement alloc] initWithValue:0.33]];
 	[subsection	addElement:[[QMapElement alloc] init]];
     [subsection	addElement:[[QPickerElement alloc] init]];
 	[subsection	addElement:[[QRadioElement alloc] init]];
@@ -119,6 +119,7 @@
     bool1.onImage = [UIImage imageNamed:@"imgOn"];
     bool1.offImage = [UIImage imageNamed:@"imgOff"];
     [subsection3 addElement:bool1];
+    [subsection3 addElement:[[QFloatElement alloc] initWithValue:0.5]];
     QBooleanElement *bool2 = [[QBooleanElement alloc] initWithTitle:@"Second option" BoolValue:NO];
     bool2.onImage = [UIImage imageNamed:@"imgOn"];
     bool2.offImage = [UIImage imageNamed:@"imgOff"];
@@ -762,6 +763,7 @@
 
     if (objc_getClass("NSJSONSerialization")!=nil) {
         QSection *sectionJson = [[QSection alloc] initWithTitle:@"JSON Samples"];
+        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"kimu"]];
         [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"loginform"]];
         [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"sample"]];
         [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsondatasample"]];
