@@ -26,8 +26,8 @@
     NSMutableDictionary *dataDict = [NSMutableDictionary new];
     [dataDict setValue:@"Obj Date" forKey:@"myDate"];
     [dataDict setValue:@"Obj Time" forKey:@"myTime"];
-    [dataDict setValue:@"Hello" forKey:@"dateTitle"];
-    [dataDict setValue:@"Goodbye" forKey:@"timeTitle"];
+    [dataDict setValue:@"Today" forKey:@"dateTitle"];
+    [dataDict setValue:@"Right Now" forKey:@"timeTitle"];
     [dataDict setValue:@"Bound from object" forKey:@"sectionTitle"];
     [dataDict setValue:[NSNumber numberWithBool:NO] forKey:@"bool"];
     [dataDict setValue:[NSNumber numberWithFloat:0.9] forKey:@"float"];
@@ -36,18 +36,57 @@
     [self.quickDialogTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,2)] withRowAnimation:UITableViewRowAnimationFade];
 
 }
+
+//for backwards compatibility
 -(void)readValuesFromForm:(QElement *)button {
+    [self showValuesFromForm:button];
+}
+
+-(void)showValuesFromForm:(QElement *)button {
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [self.root fetchValueUsingBindingsIntoObject:dict];
 
-    NSString *msg = @"Values:";
+    NSString *msg = @"Form Values:";
     for (NSString *aKey in dict){
-        msg = [msg stringByAppendingFormat:@"\n- %@: %@", aKey, [dict valueForKey:aKey]];
+        msg = [msg stringByAppendingFormat:@"\n %@ = %@", aKey, [dict valueForKey:aKey]];
     }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Testing Info"
                                                     message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
+
+-(void)showSavedState:(QElement *)button {
+    NSString *msg = @"Saved State:";
+    if (!_savedState) {
+        msg = [msg stringByAppendingFormat:@"\n<none>"];
+    } else {
+        for (NSString *aKey in _savedState){
+            msg = [msg stringByAppendingFormat:@"\n %@ = %@", aKey, [_savedState valueForKey:aKey]];
+        }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Testing Info"
+                                                    message:msg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+NSMutableDictionary *_savedState;
+
+-(void)saveValuesFromForm:(QElement *)button {
+    if (!_savedState) {
+        _savedState = [[NSMutableDictionary alloc] init];
+    }
+    [self.root fetchValueUsingBindingsIntoObject:_savedState];
+}
+
+-(void)restoreValuesToForm:(QElement *)button {
+    if (_savedState)
+    {
+        [self.root bindToObject:_savedState];
+        [self.quickDialogTableView reloadData];
+        //[self.quickDialogTableView reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,1)] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 
 -(void)handleSetValuesDirectly:(QElement *)button {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
@@ -55,13 +94,14 @@
     QLabelElement *elDate = (QLabelElement *) [[self root] elementWithKey:@"date"];
     elDate.value = [dateFormatter stringFromDate:[NSDate date]];
 
-    [dateFormatter setDateFormat:@"HH-mm-ss"];
+    [dateFormatter setDateFormat:@"h-mm-ss"];
     QLabelElement *elTime = (QLabelElement *) [[self root] elementWithKey:@"time"];
     elTime.value = [dateFormatter stringFromDate:[NSDate date]];
 
     [self.quickDialogTableView reloadCellForElements:elDate, elTime, nil];
 }
 
+//FIXME not used
 -(void)handleBindWithJsonData:(QElement *)button {
     NSString *json = @"{ "
             "\"cities\": [{\"name\":\"Rome\", \"total\":1000},{\"name\":\"Milan\", \"total\":4000},{\"name\":\"Trento\", \"total\":10}],"

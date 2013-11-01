@@ -1,0 +1,31 @@
+{
+	"grouped": true,
+	"title": "Bird Groups",
+    "controllerName": "JsonDataSampleController",
+	"sections": [
+                 { "title":"On the water",
+                 "elements":[
+                             {"type":"QDecimalElement", "key":"wh", "bind":"numberValue:wh", "title":"On hold"},
+                             {"type":"QDecimalElement", "key":"wm", "bind":"numberValue:wm", "title":"Marbled"},
+                             {"type":"QDecimalElement", "key":"wk", "bind":"numberValue:wk", "title":"Kitlitz"},
+                             {"type":"QDecimalElement", "key":"wu", "bind":"numberValue:wu", "title":"Unidentified"},
+                             ]
+                 },
+                 { "title":"Flying",
+                 "elements":[
+                             {"type":"QDecimalElement", "key":"fh", "bind":"numberValue:fh", "title":"On hold"},
+                             {"type":"QDecimalElement", "key":"fm", "bind":"numberValue:fm", "title":"Marbled"},
+                             {"type":"QDecimalElement", "key":"fk", "bind":"numberValue:fk", "title":"Kitlitz"},
+                             {"type":"QDecimalElement", "key":"fu", "bind":"numberValue:fu", "title":"Unidentified"},
+                             ]
+                 } ,
+                 { "title":"Testing",
+                 "elements":[
+                             {"type":"QButtonElement", "key":"btn1", "title":"Show Values", "controllerAction":"showValuesFromForm:"},
+                             {"type":"QButtonElement", "key":"btn2", "title":"Save Values", "controllerAction":"saveValuesFromForm:"},
+                             {"type":"QButtonElement", "key":"btn3", "title":"Show Saved State", "controllerAction":"showSavedState:"},
+                             {"type":"QButtonElement", "key":"btn4", "title":"Restore Saved Values", "controllerAction":"restoreValuesToForm:"},
+                             ]
+                 } ,
+                 ]
+}
