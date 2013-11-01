@@ -39,13 +39,10 @@
 @synthesize labelingPolicy = _labelingPolicy;
 
 - (QElement *)init {
-    self = [super init];
-    if (self) {
-        self.enabled = YES;
-    }
-    return self;
+    return [self initWithKey:nil];
 }
 
+// Designated initializer
 - (QElement *)initWithKey:(NSString *)key {
     self = [super init];
     if (self){
