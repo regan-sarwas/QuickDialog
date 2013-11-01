@@ -7,7 +7,9 @@
             {"type":"QLabelElement", "title":"Label"},
             {"type":"QBadgeElement",  "title":"Badge", "badge":"123"},
             {"type":"QBooleanElement", "title":"Boolean", "boolValue":0},
-            {"type":"QBooleanElement", "title":"Boolean", "boolValue":1},
+          {"type":"QBooleanElement", "title":"Boolean", "boolValue":1},
+                                          {"type":"QFloatElement", "floatValue":0.3},
+                                          {"type":"QFloatElement", "title":"Float", "floatValue":0.5},
             {"type":"QButtonElement", "title":"Button"},
             {"type":"QDateTimeInlineElement", "title":"DateTime Inline"},
             {"type":"QPickerElement", "title":"Picker1",  "items":[["Blue", "Yellow", "Green"]]},
@@ -36,9 +38,13 @@
             {  "type":"QEntryElement", "title":"Disabled", "placeholder":"Disabled",  "enabled":false}
             ]
         } ,
-        { "elements":[
-            {"type":"QSegmentedElement", "items":["Senna", "Fittipaldi", "Schumacher"], "selected":1}
-        ]}
+                 { "title":"Segmented Elements", "elements":[
+                                                             {"type":"QSegmentedElement", "items":["Regan", "Jenny", "Mali"], "selected":1},
+                                                             {"type":"QSegmentedElement", "items":["Moose", "Sheep", "Bear", "Wolf"], "selected":0}
+                               ]},
+                 { "elements":[
+                               {"type":"QSegmentedElement", "items":["Senna", "Fittipaldi", "Schumacher"], "selected":1}
+                               ]}
 	]
 
 }
