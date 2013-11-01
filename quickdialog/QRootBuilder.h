@@ -19,14 +19,29 @@
 
 }
 
+
+// called by QRootElement(JsonBuilder).initWithJSON:andData:
+//   obj is an NSArray or NSDictionary derived from the json.
+// obj must be an NSDictionary with NSString keys (with sections, and root properties),
+// or an NSObject with a sections property that returns an NSArray of section dictionarys
+// or "section" objects see buildSection below
 - (QRootElement *)buildWithObject:(id)obj;
 
+//called by QBindingEvaluator.bindObject:toData:
 + (void)trySetProperty:(NSString *)propertyName onObject:(id)target withValue:(id)value localized:(BOOL)shouldLocalize;
 
+//called by QBindingEvaluator.bindSection:toCollection: (and toProperties:)
+//  obj is Qsection.elementTemplate (NSDictionary) or items in Qsection.beforeTemplateElements, Qsection.afterTemplateElements,
+//      or items provided by the caller
 - (QElement *)buildElementWithObject:(id)obj;
 
+//FIXME - remove from interface, not called externally
+// obj is an an NSDictionary with NSString keys (defining a elements and section properties)
+// or an object with a key value of "type" that returns a string with the name of a class
+// that inherits from QSection
 - (void)buildSectionWithObject:(id)obj forRoot:(QRootElement *)root;
 
 //called by QBindingEvaluator.bindRootElement:toCollection:
+//  dictionary is QRootElement.sectionTemplate (NSDictionary)
 - (QSection *)buildSectionWithObject:(NSDictionary *)dictionary;
 @end

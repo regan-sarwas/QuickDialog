@@ -79,6 +79,7 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
 }
 
 - (QElement *)buildElementWithObject:(id)obj {
+    //FIXME will throw if value at type is not a string, or if string is not the name of a class that inherits from QElement
     QElement *element = [[NSClassFromString([obj valueForKey:@"type"]) alloc] init];
     if (element==nil) {
         NSLog(@"Couldn't build element for type %@", [obj valueForKey:@"type"]);
