@@ -720,11 +720,52 @@
     return root; 
 }
 
++ (NSDictionary *) JSONDataFromJSONFile:(NSString *)jsonPath {
+    Class JSONSerialization = [QRootElement JSONParserClass];
+    NSAssert(JSONSerialization != NULL, @"No JSON serializer available!");
+
+    NSError *jsonParsingError = nil;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:jsonPath ofType:@"json"];
+    NSData *jsonData = [NSData dataWithContentsOfFile:filePath];
+    if (jsonData==nil)
+        NSLog(@"Couldn't read any data for JSON file named: %@", jsonPath);
+
+    NSDictionary *jsonRoot = [JSONSerialization JSONObjectWithData:jsonData options:0 error:&jsonParsingError];
+
+    if (jsonParsingError!=nil)
+        NSLog(@"Parsing error: %@", jsonParsingError.localizedDescription);
+    return jsonRoot;
+}
+
+
+
 + (QRootElement *)create {
     QRootElement *root = [[QRootElement alloc] init];
     root.grouped = YES;
     root.title = @"QuickDialog!";
     root.controllerName = @"ExampleViewController";
+
+    if (objc_getClass("NSJSONSerialization")!=nil) {
+        QSection *sectionJson = [[QSection alloc] initWithTitle:@"JSON Samples"];
+
+        NSDictionary *json = [self JSONDataFromJSONFile:@"kimu"];
+        for (NSDictionary *dialog in json[@"dialogs"]) {
+            [sectionJson addElement:[[QRootElement alloc] initWithJSON:dialog andData:nil]];
+        }
+
+        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"loginform"]];
+        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"sample"]];
+        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsondatasample"]];
+        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsonadvancedsample"]];
+        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsonremote"]];
+
+
+        NSString *jsonSample = @"{\"title\": \"In memory struct\",\n"
+        "    \"controllerName\": \"LoginController\", \"sections\":[]}";
+        id const parsedJson = [NSJSONSerialization JSONObjectWithData:[jsonSample dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
+        [sectionJson addElement:[[QRootElement alloc] initWithJSON:parsedJson andData:nil]];
+        [root addSection:sectionJson];
+    }
 
 	QSection *sectionSamples = [[QSection alloc] init];
     sectionSamples.footer = @"Hey there, this is a footer.";
@@ -766,22 +807,6 @@
     [root addSection:sectionSamples];
     [root addSection:sectionElements];
 
-    if (objc_getClass("NSJSONSerialization")!=nil) {
-        QSection *sectionJson = [[QSection alloc] initWithTitle:@"JSON Samples"];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"kimu"]];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"loginform"]];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"sample"]];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsondatasample"]];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsonadvancedsample"]];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSONFile:@"jsonremote"]];
-
-
-        NSString *jsonSample = @"{\"title\": \"In memory struct\",\n"
-                            "    \"controllerName\": \"LoginController\", \"sections\":[]}";
-        id const parsedJson = [NSJSONSerialization JSONObjectWithData:[jsonSample dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableLeaves error:nil];
-        [sectionJson addElement:[[QRootElement alloc] initWithJSON:parsedJson andData:nil]];
-        [root addSection:sectionJson];
-    }
 
     return root;
 }
