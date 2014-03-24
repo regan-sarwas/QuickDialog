@@ -163,6 +163,7 @@
 
 
     QRadioElement *radioElement = [[QRadioElement alloc] initWithItems:[[NSArray alloc] initWithObjects:@"Option 1", @"Option 2", @"Option 3",@"Option 11", @"Option 12", @"Option 13", @"Option 21", @"Option 22", @"Option 33", @"Option 41", @"Option 42", @"Option 43", @"Option 51", @"Option 52", @"Option 53", @"Option 61", @"Option 62", @"Option 63", @"Option 71", @"Option 72", @"Option 73", nil] selected:7 title:@"Radio"];
+    radioElement.itemsImageNames = @[ @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel", @"iPhone", @"intel" ];
 	radioElement.key = @"radio1";
 
 
@@ -459,6 +460,10 @@
     b1.image = [UIImage imageNamed:@"intel"];
     [secImg addElement:b1];
 
+    QLabelElement *b4 = [[QLabelElement alloc] initWithTitle:@"Processor processor processor processor processor processor processor" Value:nil];
+    b4.image = [UIImage imageNamed:@"intel"];
+    [secImg addElement:b4];
+
     QLabelElement *b2 = [[QLabelElement alloc] initWithTitle:@"iPhone" Value:@"OK"];
     b2.image = [UIImage imageNamed:@"iPhone"];
     [secImg addElement:b2];
@@ -473,8 +478,8 @@
     QSection *sec = [[QSection alloc] initWithTitle:@"Jazzin.."];
     [badge3 addSection:sec];
 
-    QBadgeElement *b4 = [[QBadgeElement alloc] initWithTitle:@"With a really really really long title" Value:@"YEAH"];
-    [s2 addElement:b4];
+    QBadgeElement *b5 = [[QBadgeElement alloc] initWithTitle:@"With a really really really long title" Value:@"YEAH"];
+    [s2 addElement:b5];
 
     [s2 addElement:badge3];
     [sec addElement:[[QBadgeElement alloc] initWithTitle:@"Test" Value:@"0"]];

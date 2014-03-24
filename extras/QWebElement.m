@@ -14,6 +14,8 @@
 
 #import "QWebElement.h"
 #import "QuickDialog.h"
+#import "QWebViewController.h"
+
 @implementation QWebElement
 
 @synthesize url = _url;
@@ -52,7 +54,7 @@
 
 
 - (void)selected:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller indexPath:(NSIndexPath *)path {
-    [self handleElementSelected:controller];
+    [self performAction];
 	if (_html) {
 		QWebViewController *webController = [[QWebViewController alloc] initWithHTML:_html];
         webController.title = self.title;

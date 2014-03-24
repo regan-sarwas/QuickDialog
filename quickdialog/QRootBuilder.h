@@ -44,4 +44,6 @@
 //called by QBindingEvaluator.bindRootElement:toCollection:
 //  dictionary is QRootElement.sectionTemplate (NSDictionary)
 - (QSection *)buildSectionWithObject:(NSDictionary *)dictionary;
+
+
 @end
