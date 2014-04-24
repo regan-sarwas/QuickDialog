@@ -38,6 +38,8 @@
 		2C5423D9145ADF2B0026A152 /* QSortingSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D811F8B913EC905B00E3922B /* QSortingSection.m */; };
 		2C5423DB145ADF2B0026A152 /* QTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D811F8BB13EC905B00E3922B /* QTextElement.m */; };
 		2CE450B3145AE43D00B77D0E /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C542393145ADEBD0026A152 /* libQuickDialog.a */; };
+		391C779B190971D7006E220E /* QIntegerElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C779A190971D7006E220E /* QIntegerElement.m */; };
+		391C779E19097240006E220E /* QIntegerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C779D19097240006E220E /* QIntegerTableViewCell.m */; };
 		39F7DD0B182426590037E99C /* kimu.json in Resources */ = {isa = PBXBuildFile; fileRef = 39F7DD0A182420120037E99C /* kimu.json */; };
 		39F7DD0D18280E590037E99C /* mission.json in Resources */ = {isa = PBXBuildFile; fileRef = 39F7DD0C18280E4E0037E99C /* mission.json */; };
 		5C50E1652D781293C5963717 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C50E2CE6D8D6B3DD766CCCC /* themes.json */; };
@@ -199,6 +201,10 @@
 		194C3FC114EDF0510036C9E7 /* DOAutocompleteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DOAutocompleteTextField.m; path = quickdialog/DOAutocompleteTextField.m; sourceTree = SOURCE_ROOT; };
 		2C542393145ADEBD0026A152 /* libQuickDialog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQuickDialog.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE450A9145ADFAC00B77D0E /* libQuickDialog-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "libQuickDialog-Prefix.pch"; path = "libQuickDialog/libQuickDialog-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		391C7799190971D7006E220E /* QIntegerElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QIntegerElement.h; path = quickdialog/QIntegerElement.h; sourceTree = SOURCE_ROOT; };
+		391C779A190971D7006E220E /* QIntegerElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QIntegerElement.m; path = quickdialog/QIntegerElement.m; sourceTree = SOURCE_ROOT; };
+		391C779C19097240006E220E /* QIntegerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QIntegerTableViewCell.h; path = quickdialog/QIntegerTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		391C779D19097240006E220E /* QIntegerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QIntegerTableViewCell.m; path = quickdialog/QIntegerTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		39F7DD0A182420120037E99C /* kimu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kimu.json; sourceTree = SOURCE_ROOT; };
 		39F7DD0C18280E4E0037E99C /* mission.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mission.json; sourceTree = SOURCE_ROOT; };
 		5C50E02C8F4B4A90F96E33D6 /* QMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMapAnnotation.h; sourceTree = "<group>"; };
@@ -608,6 +614,10 @@
 				D811F88F13EC905B00E3922B /* QDateTimeElement.m */,
 				D811F89013EC905B00E3922B /* QDateTimeInlineElement.h */,
 				D811F89113EC905B00E3922B /* QDateTimeInlineElement.m */,
+				391C7799190971D7006E220E /* QIntegerElement.h */,
+				391C779A190971D7006E220E /* QIntegerElement.m */,
+				391C779C19097240006E220E /* QIntegerTableViewCell.h */,
+				391C779D19097240006E220E /* QIntegerTableViewCell.m */,
 				D8F180E813F0599A009B0C99 /* QDecimalElement.h */,
 				D8F180E813F0599A009B0C97 /* QDecimalElement.m */,
 				D8F180E813F0599A009B0C9C /* QDecimalTableViewCell.h */,
@@ -974,7 +984,9 @@
 			files = (
 				D811F8FB13EC907200E3922B /* AboutController.m in Sources */,
 				D811F8FC13EC907200E3922B /* SampleDataBuilder.m in Sources */,
+				391C779E19097240006E220E /* QIntegerTableViewCell.m in Sources */,
 				D811F8FE13EC907200E3922B /* LoginController.m in Sources */,
+				391C779B190971D7006E220E /* QIntegerElement.m in Sources */,
 				D811F8FF13EC907200E3922B /* LoginInfo.m in Sources */,
 				D811F90013EC907200E3922B /* main.m in Sources */,
 				D811F90213EC907200E3922B /* ExampleAppDelegate.m in Sources */,

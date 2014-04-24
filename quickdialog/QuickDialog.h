@@ -48,6 +48,7 @@
 #import "QRadioItemElement.h"
 #import "QSelectItemElement.h"
 #import "QTextElement.h"
+#import "QIntegerElement.h"
 #import "QDecimalElement.h"
 #import "QSortingSection.h"
 #import "QDateTimeElement.h"
