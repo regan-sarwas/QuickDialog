@@ -202,6 +202,10 @@
     decimal.fractionDigits = 2;
     [controls addElement:decimal];
 
+    QIntegerElement *integral = [[QIntegerElement alloc] initWithTitle:@"Integer Element" value:@3];
+    integral.key = @"integer1";
+    [controls addElement:integral];
+
     QMultilineElement *multiline = [[QMultilineElement alloc] initWithTitle:@"Multiline" value:@""];
     multiline.key = @"multiline";
     [controls addElement:multiline];
@@ -220,13 +224,14 @@
 	QButtonElement *button = [[QButtonElement alloc] initWithTitle:@"Show form values"];
 	button.onSelected = ^{
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello"
-            message:[NSString stringWithFormat:@"1: %d\n2: %@\n3: %d\n4:%@\n5:%f\n6:%@\n7:%@",
+            message:[NSString stringWithFormat:@"1: %d\n2: %@\n3: %d\n4:%@\n5:%f\n6:%@\n7:%@\n8:%@",
                 radioElement.selected ,
                 entryElement.textValue,
                 boolElement.boolValue,
                 dateElement.dateValue ,
                 slider.floatValue,
                 decimal.numberValue,
+                integral.numberValue,
                                     autoElement.textValue]
            delegate:self 
            cancelButtonTitle:@"OK" 
