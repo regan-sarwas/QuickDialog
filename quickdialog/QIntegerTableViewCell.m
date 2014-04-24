@@ -104,4 +104,14 @@
     [self updateTextFieldFromElement];
 }
 
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self recalculateEntryFieldPosition];
+    CGRect entryFrame = _entryElement.parentSection.entryPosition;
+    int bufferForClearTextIcon = 30;
+    _stepper.frame = CGRectMake(entryFrame.origin.x + entryFrame.size.width - _stepper.frame.size.width - bufferForClearTextIcon,
+                                entryFrame.origin.y, _stepper.frame.size.width, _stepper.frame.size.height);
+}
+
 @end
