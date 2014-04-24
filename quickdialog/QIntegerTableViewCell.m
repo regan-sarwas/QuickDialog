@@ -16,6 +16,7 @@
 #import "QuickDialog.h"
 @implementation QIntegerTableViewCell {
     NSNumberFormatter *_numberFormatter;
+    UIStepper *_stepper;
 }
 
 - (QIntegerTableViewCell *)init {
@@ -42,7 +43,10 @@
     _textField.autoresizingMask = ( UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.contentView addSubview:_textField];
 
-    //TODO: Create Stepper
+    //Create Stepper
+    _stepper = [[UIStepper alloc] init];
+    [_stepper addTarget:self action:@selector(updateElementFromStepper:) forControlEvents:UIControlEventValueChanged];
+    [self.contentView addSubview:_stepper];
 
     [self setNeedsLayout];
 }
@@ -55,10 +59,16 @@
     _textField.text = [_numberFormatter stringFromNumber:[self integerElement].numberValue];
 }
 
+- (void)updateStepperFromElement {
+    NSInteger value = [self integerElement].numberValue.integerValue;
+    _stepper.value = (double)value;
+}
+
 - (void)prepareForElement:(QEntryElement *)element inTableView:(QuickDialogTableView *)view {
     [super prepareForElement:element inTableView:view];
     _entryElement = element;
     [self updateTextFieldFromElement];
+    [self updateStepperFromElement];
 }
 
 - (void)updateElementFromTextField:(NSString *)value {
@@ -67,6 +77,7 @@
                         componentsJoinedByString:@""];
     NSInteger parsedValue = [_numberFormatter numberFromString:result].integerValue;
     [self integerElement].numberValue = [NSNumber numberWithInteger:parsedValue];
+    [self updateStepperFromElement];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)replacement {
@@ -84,5 +95,10 @@
     return NO;
 }
 
+- (void)updateElementFromStepper:(UIStepper *)stepper
+{
+    [self integerElement].numberValue = @((int)stepper.value);
+    [self updateTextFieldFromElement];
+}
 
 @end
