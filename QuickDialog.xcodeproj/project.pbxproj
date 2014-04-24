@@ -38,8 +38,10 @@
 		2C5423D9145ADF2B0026A152 /* QSortingSection.m in Sources */ = {isa = PBXBuildFile; fileRef = D811F8B913EC905B00E3922B /* QSortingSection.m */; };
 		2C5423DB145ADF2B0026A152 /* QTextElement.m in Sources */ = {isa = PBXBuildFile; fileRef = D811F8BB13EC905B00E3922B /* QTextElement.m */; };
 		2CE450B3145AE43D00B77D0E /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C542393145ADEBD0026A152 /* libQuickDialog.a */; };
-		391C779B190971D7006E220E /* QIntegerElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C779A190971D7006E220E /* QIntegerElement.m */; };
-		391C779E19097240006E220E /* QIntegerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C779D19097240006E220E /* QIntegerTableViewCell.m */; };
+		391C779F1909D3CB006E220E /* QIntegerElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 391C7799190971D7006E220E /* QIntegerElement.h */; };
+		391C77A01909D3E0006E220E /* QIntegerElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C779A190971D7006E220E /* QIntegerElement.m */; };
+		391C77A11909D3E4006E220E /* QIntegerTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 391C779C19097240006E220E /* QIntegerTableViewCell.h */; };
+		391C77A21909D3E9006E220E /* QIntegerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 391C779D19097240006E220E /* QIntegerTableViewCell.m */; };
 		39F7DD0B182426590037E99C /* kimu.json in Resources */ = {isa = PBXBuildFile; fileRef = 39F7DD0A182420120037E99C /* kimu.json */; };
 		39F7DD0D18280E590037E99C /* mission.json in Resources */ = {isa = PBXBuildFile; fileRef = 39F7DD0C18280E4E0037E99C /* mission.json */; };
 		5C50E1652D781293C5963717 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C50E2CE6D8D6B3DD766CCCC /* themes.json */; };
@@ -762,6 +764,7 @@
 				D81F2EDE14BBAFCE0066C372 /* QBooleanElement.h in Headers */,
 				D81F2EDF14BBAFCE0066C372 /* QButtonElement.h in Headers */,
 				D81F2EE014BBAFCE0066C372 /* QDateEntryTableViewCell.h in Headers */,
+				391C779F1909D3CB006E220E /* QIntegerElement.h in Headers */,
 				D81F2EE114BBAFCE0066C372 /* QDateTimeElement.h in Headers */,
 				D81F2EE214BBAFCE0066C372 /* QDateTimeInlineElement.h in Headers */,
 				D81F2EE314BBAFCE0066C372 /* QElement.h in Headers */,
@@ -788,6 +791,7 @@
 				D8F180E813F0599A009B0CC6 /* QTableViewCell.h in Headers */,
 				194C3FC214EDF0510036C9E7 /* DOAutocompleteTextField.h in Headers */,
 				D87B4FCB14F16197006DA833 /* QAutoEntryElement.h in Headers */,
+				391C77A11909D3E4006E220E /* QIntegerTableViewCell.h in Headers */,
 				D87B4FCD14F16197006DA833 /* QAutoEntryTableViewCell.h in Headers */,
 				D8B39450151394E1008ECB34 /* QEmptyListElement.h in Headers */,
 				D8B39452151394E1008ECB34 /* QMultilineElement.h in Headers */,
@@ -933,6 +937,7 @@
 				2C5423B7145ADF2B0026A152 /* QEntryTableViewCell.m in Sources */,
 				2C5423B9145ADF2B0026A152 /* QFloatElement.m in Sources */,
 				2C5423C3145ADF2B0026A152 /* QuickDialogController.m in Sources */,
+				391C77A21909D3E9006E220E /* QIntegerTableViewCell.m in Sources */,
 				2C5423C5145ADF2B0026A152 /* QuickDialogController+Loading.m in Sources */,
 				2C5423C7145ADF2B0026A152 /* QuickDialogDataSource.m in Sources */,
 				2C5423CA145ADF2B0026A152 /* QuickDialogTableDelegate.m in Sources */,
@@ -961,6 +966,7 @@
 				D8F180E813F0599A009B0CC8 /* NSMutableArray+MoveObject.m in Sources */,
 				D8B39451151394E1008ECB34 /* QEmptyListElement.m in Sources */,
 				D8B39453151394E1008ECB34 /* QMultilineElement.m in Sources */,
+				391C77A01909D3E0006E220E /* QIntegerElement.m in Sources */,
 				D8B39456151394E1008ECB34 /* QMultilineTextViewController.m in Sources */,
 				D8B3946A1514E8B3008ECB34 /* QSegmentedElement.m in Sources */,
 				D8F180E813F0599A009B0CD2 /* QuickDialogWebController.m in Sources */,
@@ -984,9 +990,7 @@
 			files = (
 				D811F8FB13EC907200E3922B /* AboutController.m in Sources */,
 				D811F8FC13EC907200E3922B /* SampleDataBuilder.m in Sources */,
-				391C779E19097240006E220E /* QIntegerTableViewCell.m in Sources */,
 				D811F8FE13EC907200E3922B /* LoginController.m in Sources */,
-				391C779B190971D7006E220E /* QIntegerElement.m in Sources */,
 				D811F8FF13EC907200E3922B /* LoginInfo.m in Sources */,
 				D811F90013EC907200E3922B /* main.m in Sources */,
 				D811F90213EC907200E3922B /* ExampleAppDelegate.m in Sources */,
