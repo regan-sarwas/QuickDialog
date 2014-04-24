@@ -74,14 +74,13 @@
 }
 
 - (void)updateElementFromTextField:(NSString *)value {
-    NSString *result = [[value componentsSeparatedByCharactersInSet:
-                         [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-                        componentsJoinedByString:@""];
-    NSInteger parsedValue = [_numberFormatter numberFromString:result].integerValue;
-    parsedValue = (parsedValue < [self integerElement].minimumValue) ? [self integerElement].minimumValue : parsedValue;
-    parsedValue = ([self integerElement].maximumValue < parsedValue) ? [self integerElement].maximumValue : parsedValue;
-    [self integerElement].numberValue = [NSNumber numberWithInteger:parsedValue];
-    [self updateStepperFromElement];
+    NSInteger intValue = value.integerValue;
+    if (intValue != 0 || [value isEqualToString:@"0"] || [value isEqualToString:@"-0"] || [value isEqualToString:@"-"] || [value isEqualToString:@""]) {
+        if ([self integerElement].minimumValue <= intValue && intValue <= [self integerElement].maximumValue) {
+            [self integerElement].numberValue = [NSNumber numberWithInteger:intValue];
+            [self updateStepperFromElement];
+        }
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)replacement {
