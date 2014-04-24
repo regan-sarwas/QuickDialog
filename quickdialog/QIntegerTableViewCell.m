@@ -68,6 +68,8 @@
     [super prepareForElement:element inTableView:view];
     _entryElement = element;
     [self updateTextFieldFromElement];
+    _stepper.minimumValue = (double)[self integerElement].minimumValue;
+    _stepper.maximumValue = (double)[self integerElement].maximumValue;
     [self updateStepperFromElement];
 }
 
@@ -76,6 +78,8 @@
                          [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
                         componentsJoinedByString:@""];
     NSInteger parsedValue = [_numberFormatter numberFromString:result].integerValue;
+    parsedValue = (parsedValue < [self integerElement].minimumValue) ? [self integerElement].minimumValue : parsedValue;
+    parsedValue = ([self integerElement].maximumValue < parsedValue) ? [self integerElement].maximumValue : parsedValue;
     [self integerElement].numberValue = [NSNumber numberWithInteger:parsedValue];
     [self updateStepperFromElement];
 }

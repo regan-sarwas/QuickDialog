@@ -24,6 +24,8 @@
 }
 
 @property(nonatomic, retain) NSNumber * numberValue;
+@property(nonatomic, assign) NSInteger minimumValue;
+@property(nonatomic, assign) NSInteger maximumValue;
 
 - (QIntegerElement *)initWithTitle:(NSString *)string value:(NSNumber *)value;
 - (QIntegerElement *)initWithValue:(NSNumber *)value;

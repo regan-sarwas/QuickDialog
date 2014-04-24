@@ -16,30 +16,29 @@
 #import "QIntegerTableViewCell.h"
 #import "QIntegerElement.h"
 
-@implementation QIntegerElement
+@implementation QIntegerElement {
+
+@protected
+    NSInteger _minimumValue;
+    NSInteger _maximumValue;
+}
 
 @synthesize numberValue = _numberValue;
+@synthesize minimumValue = _minimumValue;
+@synthesize maximumValue = _maximumValue;
 
 - (QIntegerElement *)initWithTitle:(NSString *)title value:(NSNumber *)value {
     self = [super initWithTitle:title Value:nil];
     if (self) {
-        _numberValue = value;
-        self.keyboardType = UIKeyboardTypeDecimalPad;
+        [self myInit:value];
     }
     return self;
-}
-
-- (void)setFloatValue:(NSNumber *)floatValue {
-    _numberValue = floatValue;
-    if (_numberValue==nil)
-        _numberValue = @0;
 }
 
 - (QIntegerElement *)initWithValue:(NSNumber *)value {
     self = [super init];
     if (self) {
-        _numberValue = value;
-        self.keyboardType = UIKeyboardTypeDecimalPad;
+        [self myInit:value];
     }
     return self;
 }
@@ -47,13 +46,32 @@
 - (QIntegerElement *)init {
     self = [super init];
     if (self) {
-        _numberValue = @0;
-        self.keyboardType = UIKeyboardTypeDecimalPad;
+        [self myInit:@0];
     }
-
     return self;
 }
 
+- (void)myInit:(NSNumber *)value
+{
+    _numberValue = value;
+    self.keyboardType = UIKeyboardTypeDecimalPad;
+    // 0..100 matches the defaults for UIStepper, so these seem like good defaults for us.
+    NSInteger intValue = value.integerValue;
+    _minimumValue = (intValue < 0) ? intValue : 0;
+    _maximumValue = (100 < intValue) ? intValue : 100;
+}
+
+- (void)setMinimumValue:(NSInteger)minimumValue {
+    _minimumValue = minimumValue;
+    if (_numberValue.integerValue < minimumValue)
+        _numberValue = @(minimumValue);
+}
+
+- (void)setMaximumValue:(NSInteger)maximumValue {
+    _maximumValue = maximumValue;
+    if (maximumValue < _numberValue.integerValue)
+        _numberValue = @(maximumValue);
+}
 
 - (UITableViewCell *)getCellForTableView:(QuickDialogTableView *)tableView controller:(QuickDialogController *)controller {
 

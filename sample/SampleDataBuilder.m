@@ -204,6 +204,8 @@
 
     QIntegerElement *integral = [[QIntegerElement alloc] initWithTitle:@"Integer Element" value:@3];
     integral.key = @"integer1";
+    //default integral.minimumValue is 0; integral.maximumValue is 100
+    integral.maximumValue = 10;
     [controls addElement:integral];
 
     QMultilineElement *multiline = [[QMultilineElement alloc] initWithTitle:@"Multiline" value:@""];
