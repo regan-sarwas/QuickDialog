@@ -309,6 +309,7 @@
 }
 
 - (BOOL)resignFirstResponder {
+    [super resignFirstResponder];
 	return YES;
 }
 
