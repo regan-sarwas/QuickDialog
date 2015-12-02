@@ -30,6 +30,11 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
     shouldLocalize = shouldLocalize && ![propertyName isEqualToString:@"bind"] && ![propertyName isEqualToString:@"type"];
     if ([value isKindOfClass:[NSString class]]) {
         if ([QRootBuilderStringToTypeConversionDict objectForKey:propertyName]!=nil) {
+            //Note: the following line may crash with something similar to
+            //Fatal Exception: NSInvalidArgumentException
+            //[<QEntryElement 0x16e75eb0> setNilValueForKey]: could not set nil as the value for the key autocapitalizationType.
+            //if an attempt is made to set a scalar (int, float, etc) property to nil
+            //This is usually a sign of a badly formed dialog definition in JSON
             [target setValue:[[QRootBuilderStringToTypeConversionDict objectForKey:propertyName] objectForKey:value] forKeyPath:propertyName];
         } else {
             [target setValue:shouldLocalize ? QTranslate(value) : value forKeyPath:propertyName];
