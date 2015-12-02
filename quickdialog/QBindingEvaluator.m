@@ -146,13 +146,14 @@
         if (![propName isEqualToString:@"iterate"] && ![valueName isEqualToString:@"self"]) {
             @try {
                 id value = [element valueForKeyPath:propName];
-                if (propName!= nil && value!=nil)
+                //if (valueName!= nil && value!=nil)
                     [data setValue:value forKeyPath:valueName];
-                else if (valueName != nil && value==nil)
-                    [data setNilValueForKey:valueName];
+                //else if (valueName != nil && value==nil)
+                //    [data setNilValueForKey:valueName];
             }
             @catch (NSException *exception) {
                 NSLog(@"Couldn't set property %@ on object %@", valueName, data);
+                NSLog(@"Exception: %@", exception);
             }
         }
     }
