@@ -162,7 +162,7 @@
 -(void)setSelected:(NSInteger)aSelected {
     _selected = aSelected;
 
-    self.preselectedElementIndex = [NSIndexPath indexPathForRow:_selected inSection:0];
+    self.preselectedElementIndex = aSelected < 0 ? nil : [NSIndexPath indexPathForRow:_selected inSection:0];
 
     if([_itemsImageNames objectAtIndex:(NSUInteger) self.selected] != nil) {
         self.image = [UIImage imageNamed:[_itemsImageNames objectAtIndex:(NSUInteger) self.selected]];
