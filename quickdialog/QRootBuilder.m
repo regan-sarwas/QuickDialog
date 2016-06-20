@@ -68,7 +68,15 @@ NSDictionary *QRootBuilderStringToTypeConversionDict;
     } else if ([value isKindOfClass:[NSObject class]]){
         [target setValue:value forKeyPath:propertyName];
     } else if (value == nil){
-        [target setValue:nil forKeyPath:propertyName];
+        @try {
+            //May fail with Fatal Exception: NSInvalidArgumentException
+            //if an attempt is made to set a scalar (int, float, etc) property to nil
+            //typically on the selected (int) property of a QRadioElement
+            [target setValue:nil forKeyPath:propertyName];
+        }
+        @catch (NSException * e) {
+            NSLog(@"Exception: %@, Setting %@.%@ to nil", e, target, propertyName);
+        }
     }
 }
 
