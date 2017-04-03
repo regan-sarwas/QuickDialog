@@ -55,7 +55,8 @@
 
 - (void)awakeFromNib
 {
-    [self setupSubviews];    
+    [super awakeFromNib];
+    [self setupSubviews];
 }
 
 - (void)setupSubviews

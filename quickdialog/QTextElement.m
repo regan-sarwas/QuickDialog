@@ -62,8 +62,11 @@
         return [super getRowHeightForTableView:tableView];
     }
     CGSize constraint = CGSizeMake(tableView.frame.size.width-(tableView.root.grouped ? 40.f : 20.f), 20000);
-    CGSize  size= [_text sizeWithFont:self.appearance.valueFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
-	CGFloat predictedHeight = size.height + 40.0f;
+    CGRect rect = [_text boundingRectWithSize:constraint
+                                      options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                   attributes:@{NSFontAttributeName:self.appearance.valueFont}
+                                      context:nil];
+	CGFloat predictedHeight = rect.size.height + 40.0f;
     if (self.title!=nil)
         predictedHeight+=30;
 	return (_height >= predictedHeight) ? _height : predictedHeight;
