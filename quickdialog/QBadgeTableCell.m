@@ -29,7 +29,6 @@
         [self.contentView addSubview:_badgeLabel];
         _badgeLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _badgeLabel.contentMode = UIViewContentModeRedraw;
-        _badgeLabel.contentStretch = CGRectMake(1., 0., 0., 0.);
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
