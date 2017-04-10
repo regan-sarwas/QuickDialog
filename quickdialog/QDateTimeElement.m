@@ -190,7 +190,7 @@
             NSLog(@"This control was not created to handle this time of UIDatePickerMode");
         }
 
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit fromDate:date];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:date];
         NSDateComponents *timeComponents = [[NSCalendar currentCalendar] components:kCFCalendarUnitHour | kCFCalendarUnitMinute | kCFCalendarUnitSecond fromDate:time];
 
         [components setHour:[timeComponents hour]];

@@ -35,7 +35,6 @@
 
     _prevNext = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:NSLocalizedString(@"Previous", @""), NSLocalizedString(@"Next", @""), nil]];
     _prevNext.momentary = YES;
-    _prevNext.segmentedControlStyle = UISegmentedControlStyleBar;
     _prevNext.tintColor = actionBar.tintColor;
     [_prevNext addTarget:self action:@selector(handleActionBarPreviousNext:) forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *prevNextWrapper = [[UIBarButtonItem alloc] initWithCustomView:_prevNext];
@@ -96,8 +95,11 @@
             if ([el isKindOfClass:[QEntryElement class]]){
                 QEntryElement *q = (QEntryElement*)el; 
                 CGFloat imageWidth = q.image == NULL ? 0 : self.imageView.frame.size.width;
-                CGFloat fontSize = self.textLabel.font.pointSize == 0? 17 : self.textLabel.font.pointSize;
-                CGSize size = [((QEntryElement *)el).title sizeWithFont:[self.textLabel.font fontWithSize:fontSize] forWidth:CGFLOAT_MAX lineBreakMode:NSLineBreakByWordWrapping] ;
+                CGSize size = [((QEntryElement *)el).title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+                                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                                     attributes:@{ NSFontAttributeName : self.textLabel.font}
+                                                                        context:nil].size;
+
                 CGFloat width = size.width + imageWidth + 20;
                 if (width>titleWidth)
                     titleWidth = width;
