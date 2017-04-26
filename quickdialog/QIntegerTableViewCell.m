@@ -17,6 +17,7 @@
 @implementation QIntegerTableViewCell {
     NSNumberFormatter *_numberFormatter;
     UIStepper *_stepper;
+    NSNumber *_initialValue;
 }
 
 - (QIntegerTableViewCell *)init {
@@ -68,6 +69,7 @@
     [super prepareForElement:element inTableView:view];
     _entryElement = element;
     [self updateTextFieldFromElement];
+    _initialValue = [self integerElement].numberValue;
     _stepper.minimumValue = (double)[self integerElement].minimumValue;
     _stepper.maximumValue = (double)[self integerElement].maximumValue;
     [self updateStepperFromElement];
@@ -95,6 +97,13 @@
         [self updateTextFieldFromElement];
         [_entryElement handleEditingChanged:self];
     }
+    return NO;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    [self integerElement].numberValue = _initialValue;
+    _textField.text = [_numberFormatter stringFromNumber:[self integerElement].numberValue];
+    [self updateStepperFromElement];
     return NO;
 }
 
