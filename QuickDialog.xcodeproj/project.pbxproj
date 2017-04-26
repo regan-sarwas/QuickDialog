@@ -206,6 +206,10 @@
 		391C779A190971D7006E220E /* QIntegerElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QIntegerElement.m; path = quickdialog/QIntegerElement.m; sourceTree = SOURCE_ROOT; };
 		391C779C19097240006E220E /* QIntegerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QIntegerTableViewCell.h; path = quickdialog/QIntegerTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		391C779D19097240006E220E /* QIntegerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QIntegerTableViewCell.m; path = quickdialog/QIntegerTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		39AC1D021EB010EB00BB6802 /* QIntegerElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QIntegerElement.h; sourceTree = "<group>"; };
+		39AC1D031EB010EB00BB6802 /* QIntegerElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QIntegerElement.m; sourceTree = "<group>"; };
+		39AC1D041EB010EB00BB6802 /* QIntegerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QIntegerTableViewCell.h; sourceTree = "<group>"; };
+		39AC1D051EB010EB00BB6802 /* QIntegerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QIntegerTableViewCell.m; sourceTree = "<group>"; };
 		39F7DD0A182420120037E99C /* kimu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = kimu.json; sourceTree = SOURCE_ROOT; };
 		39F7DD0C18280E4E0037E99C /* mission.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mission.json; sourceTree = SOURCE_ROOT; };
 		5C50E0150C6C96B6F803CF67 /* QuickDialogController+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuickDialogController+Helpers.h"; sourceTree = "<group>"; };
@@ -469,6 +473,10 @@
 				5C50E859368EE17084B4E25D /* QFloatElement.m */,
 				5C50E419214886847B35D563 /* QImageElement.h */,
 				5C50EE758BCC0FACD3E9882C /* QImageElement.m */,
+				39AC1D021EB010EB00BB6802 /* QIntegerElement.h */,
+				39AC1D031EB010EB00BB6802 /* QIntegerElement.m */,
+				39AC1D041EB010EB00BB6802 /* QIntegerTableViewCell.h */,
+				39AC1D051EB010EB00BB6802 /* QIntegerTableViewCell.m */,
 				5C50E2FC584A7F5132548D3C /* QLabelElement.h */,
 				5C50E701CF4ADD88F5204B67 /* QLabelElement.m */,
 				5C50E415FF4BDBF44B3856EF /* QRadioElement.h */,

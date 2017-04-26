@@ -208,6 +208,13 @@
     integral.maximumValue = 10;
     [controls addElement:integral];
 
+    QIntegerElement *integral2 = [[QIntegerElement alloc] initWithTitle:@"Null Integer" value:nil];
+    integral2.key = @"integer2";
+    //default integral.minimumValue is 0; integral.maximumValue is 100
+    integral2.minimumValue = -10;
+    integral2.maximumValue = 123;
+    [controls addElement:integral2];
+
     QMultilineElement *multiline = [[QMultilineElement alloc] initWithTitle:@"Multiline" value:@""];
     multiline.key = @"multiline";
     [controls addElement:multiline];
