@@ -181,6 +181,7 @@
 }
 
 - (void)prepareForReuse {
+    [super prepareForReuse];
     _quickformTableView = nil;
     _entryElement = nil;
 }
