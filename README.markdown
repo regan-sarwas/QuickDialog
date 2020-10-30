@@ -1,3 +1,7 @@
+**This fork still exists because it has minor changes not appropriate for the upstream repo, but required for the original
+[Park Observer](https://github.com/AKROGIS/Observer).
+It has been archived along with Park Observer and can be deleted if Park Observer is deleted.**
+
 # QuickDialog
 
 **Quick and simple dialogs for iOS developers.**
